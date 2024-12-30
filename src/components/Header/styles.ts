@@ -6,9 +6,9 @@ export const HeaderContainer = styled.header`
     background: ${(props) => props.theme.background};
     display: flex;
     align-items: center;
-    padding-inline: 10rem;
     justify-content: space-between;
     position: sticky;
+    padding-inline: 10rem;
     top: 0;
     left: 0;
     z-index: 5;
