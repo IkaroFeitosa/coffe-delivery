@@ -9,46 +9,73 @@ import {
   FooterContent,
   HeaderImage,
 } from "./styles";
-import SrcImg from "@assets/images/coffee/Type=expresso.png";
-import { useState } from "react";
-export function ProductCard() {
-    const [quantity,setQuantity] = useState(0)
+import { useContext, useState } from "react";
+import { Coffee } from "../../../../reducers/cart/reducers";
+import { CartContext } from "../../../../contexts/CartContext";
+export function ProductCard(coffee: Coffee) {
+  const { description, image, name, price, quantity, type } = coffee;
+  const { addProduct } = useContext(CartContext);
+  const [currentQuantity, setCurrentQuantity] = useState(quantity);
+  // const totalPrice = price * currentQuantity
+  const priceFormatCurrency = price.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
-    function handleQuantityPlus(){
-        setQuantity((current)=> current + 1)
+  function handleQuantityPlus() {
+    setCurrentQuantity((current) => current + 1);
+  }
+  function handleQuantityMinus() {
+    if (currentQuantity > 0) setCurrentQuantity((current) => current - 1);
+  }
+  function handleAddToCart() {
+    if (currentQuantity > 0) {
+      addProduct(coffee);
+      setCurrentQuantity(0);
     }
-    function handleQuantityMinus(){
-        if(quantity>0)
-            setQuantity((current)=> current - 1)
-    }
+  }
   return (
     <ContainerCard>
       <HeaderImage>
-        <img src={SrcImg} alt="" />
+        <img src={`src/assets/images/coffee/${image}.png`} alt="" />
       </HeaderImage>
       <Content>
         <BadgeContainer>
-          <span>Expresso</span>
+          {type.map((tp) => (
+            <span key={tp}>{tp}</span>
+          ))}
         </BadgeContainer>
         <BodyContent>
-          <div className="title">Café com Leite</div>
-          <div className="content">
-            Meio a meio de expresso tradicional com leite vaporizado
-          </div>
+          <div className="title">{name}</div>
+          <div className="content">{description}</div>
         </BodyContent>
         <FooterContent>
           <div>
             <span className="prefix">R$</span>{" "}
-            <span className="price">9,90</span>
+            <span className="price">{priceFormatCurrency}</span>
           </div>
           <ContainerButton>
             <ContainerInput>
-                <button className="minus" onClick={handleQuantityMinus}><Minus size={14}/></button>
-                <input type="number" placeholder="0" value={quantity} disabled />
-                <button className="plus" onClick={handleQuantityPlus}><Plus size={14}/></button>
+              <button className="minus" onClick={handleQuantityMinus}>
+                <Minus size={14} />
+              </button>
+              <input
+                type="number"
+                placeholder="0"
+                value={currentQuantity}
+                disabled
+                min={0}
+              />
+              <button className="plus" onClick={handleQuantityPlus}>
+                <Plus size={14} />
+              </button>
             </ContainerInput>
-            <button className="addCartButton">
-              <ShoppingCart size={22}/>
+            <button
+              className="addCartButton"
+              title="Adicionar ao carrinho"
+              onClick={handleAddToCart}
+            >
+              <ShoppingCart size={22} />
             </button>
           </ContainerButton>
         </FooterContent>

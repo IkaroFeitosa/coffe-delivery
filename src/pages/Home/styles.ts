@@ -18,7 +18,7 @@ export const ProductsContainer = styled.div`
 export const Content = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 2.5rem;
+    gap: 2rem;
     margin-top: 3.375rem;
 
 `

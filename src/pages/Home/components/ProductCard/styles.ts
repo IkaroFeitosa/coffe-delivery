@@ -4,7 +4,7 @@ export const ContainerCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px 20px 10px 20px;
+  border-radius: 6px 36px;
   background-color: ${(props) => props.theme["base-card"]};
   width: 16rem;
 `;
@@ -98,6 +98,9 @@ export const ContainerButton = styled.div`
     border-radius: 6px;
     cursor: pointer;
     color: ${(props) => props.theme.white};
+    &:hover {
+      background-color: ${(props) => props.theme.purple};
+    }
   }
 `;
 
