@@ -1,80 +1,63 @@
-import {  Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
-import {
-  CartContainer,
-  ContainerBase,
-  ContentForm,
-  ContentInput,
-  FormContainer,
-  HeaderForm,
-  ItemPaymentMethods,
-  ResumContainer,
-} from "./styles";
+import { CartContainer, FormContainer, ResumContainer } from "./styles";
 import { CartResum } from "./components/CartResum";
+import { PaymentMethods } from "./components/PaymentMethods";
+import { AddressForm } from "./components/AddressForm";
+import { useForm } from "react-hook-form";
+import { FormProvider } from "react-hook-form";
+import * as zod from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext, useState } from "react";
+import { CartContext } from "../../contexts/CartContext";
+
+const addressSchema = zod.object({
+  cep: zod.string().nonempty("O CEP é obrigatório"),
+  rua: zod.string().nonempty("A rua é obrigatória"),
+  numero: zod.string().nonempty("O número é obrigatório"),
+  complemento: zod.string().optional(),
+  bairro: zod.string().nonempty("O bairro é obrigatório"),
+  cidade: zod.string().nonempty("A cidade é obrigatória"),
+  uf: zod.string().nonempty("A UF é obrigatória"),
+});
+type TAddress = zod.infer<typeof addressSchema>;
 
 export function Cart() {
+  const { paymentMethod } = useContext(CartContext);
+  const [alertPaymentMethods,setAlertPaymentMethods] = useState(false);
+  const addressForm = useForm<TAddress>({
+    resolver: zodResolver(addressSchema),
+    defaultValues: {
+      cep: "",
+      rua: "",
+      numero: "",
+      complemento: "",
+      bairro: "",
+      cidade: "",
+      uf: "",
+    },
+  });
+  const { handleSubmit } = addressForm;
+
+  function onSubmit(data: TAddress) {
+    if(!paymentMethod){
+        setAlertPaymentMethods(true);
+        return;
+    }
+    setAlertPaymentMethods(false);
+    console.log(data);
+  }
   return (
     <CartContainer>
-      <FormContainer>
+      <FormContainer id="addressForm" onSubmit={handleSubmit(onSubmit)}>
         <h3>Complete seu pedido</h3>
-        <ContainerBase>
-          <form>
-            <HeaderForm>
-              <MapPin size={22} />
-              <div className="content-header">
-                <div className="title">Endereço de Entrega</div>
-                <div className="subtitle">
-                  Informe o endereço onde deseja receber seu pedido
-                </div>
-              </div>
-            </HeaderForm>
-            <ContentForm>
-              <input type="text" placeholder="CEP" className="cep" />
-              <input type="text" placeholder="Rua" className="rua" />
-              <input type="text" placeholder="Número" />
-              <ContentInput>
-                <input
-                  type="text"
-                  placeholder="Complemento"
-                  className="complemento"
-                />
-                <span>Opicional</span>
-              </ContentInput>
-              <input type="text" placeholder="Bairro" />
-              <input type="text" placeholder="Cidade" />
-              <input type="text" placeholder="UF" />
-            </ContentForm>
-          </form>
-        </ContainerBase>
+        <FormProvider {...addressForm}>
+          <AddressForm />
+        </FormProvider>
 
-        <ContainerBase className="payment-methods">
-          <HeaderForm>
-            <CurrencyDollar size={22} />
-            <div className="content-header">
-              <div className="title">Pagamento</div>
-              <div className="subtitle">
-                O pagamento é feito na entrega. Escolha a forma que deseja pagar
-              </div>
-            </div>
-          </HeaderForm>
-        <div className="content-payment-methods">
-            <ItemPaymentMethods active>
-                <CreditCard size={16}/>
-                <span>Cartão de crédito</span>
-            </ItemPaymentMethods>
-            <ItemPaymentMethods >
-                <Bank size={16}/>
-                <span>cartão de débito</span>
-            </ItemPaymentMethods>
-            <ItemPaymentMethods >
-                <Money size={16}/>
-                <span>Dinheiro</span>
-            </ItemPaymentMethods>
-        </div>
-        </ContainerBase>
+        <PaymentMethods alertContainer={alertPaymentMethods}/>
       </FormContainer>
       <ResumContainer>
         <h3>Café selecionados</h3>
-        <CartResum />
+        <CartResum formIdToSubmit="addressForm" />
       </ResumContainer>
     </CartContainer>
   );

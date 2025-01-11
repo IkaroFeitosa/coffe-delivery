@@ -13,7 +13,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "O tradicional café feito com água quente e grãos moídos",
       type: ["TRADICIONAL"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Expresso"
     },
     {
@@ -22,7 +22,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Expresso diluído, menos intenso que o tradicional",
       type: ["TRADICIONAL"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Americano"
     },
     {
@@ -31,7 +31,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Café expresso tradicional com espuma cremosa",
       type: ["TRADICIONAL"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Expresso Cremoso"
     },
     {
@@ -40,7 +40,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Bebida preparada com café expresso e cubos de gelo",
       type: ["TRADICIONAL", "GELADO"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Café Gelado"
     },
     {
@@ -49,7 +49,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Meio a meio de expresso tradicional com leite vaporizado",
       type: ["TRADICIONAL", "COM LEITE"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Café com Leite"
     },
     {
@@ -58,7 +58,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
       type: ["TRADICIONAL", "COM LEITE"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Latte"
     },
     {
@@ -67,7 +67,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Bebida com canela feita de doses iguais de café, leite e espuma",
       type: ["TRADICIONAL", "COM LEITE"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Capuccino"
     },
     {
@@ -76,7 +76,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Café expresso misturado com um pouco de leite quente e espuma",
       type: ["TRADICIONAL", "COM LEITE"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Macchiato"
     },
     {
@@ -85,7 +85,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Café expresso com calda de chocolate, pouco leite e espuma",
       type: ["TRADICIONAL", "COM LEITE"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Mocaccino"
     },
     {
@@ -94,7 +94,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Bebida feita com chocolate dissolvido no leite quente e café",
       type: ["ESPECIAL", "COM LEITE"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Chocolate Quente"
     },
     {
@@ -103,7 +103,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Drink gelado de café expresso com rum, creme de leite e hortelã",
       type: ["ESPECIAL", "ALCOÓLICO", "GELADO"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Cubano"
     },
     {
@@ -112,7 +112,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Bebida adocicada preparada com café e leite de coco",
       type: ["ESPECIAL"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Havaiano"
     },
     {
@@ -121,7 +121,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Bebida preparada com grãos de café árabe e especiarias",
       type: ["ESPECIAL"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Árabe"
     },
     {
@@ -130,7 +130,7 @@ import { Content, HomeContainer, ProductsContainer } from "./styles";
       description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
       type: ["ESPECIAL", "ALCOÓLICO"],
       price: 9.90,
-      quantity: 1,
+      quantity: 0,
       image: "Type=Irlandês"
     }
   ];

@@ -30,7 +30,7 @@ export function ProductCard(coffee: Coffee) {
   }
   function handleAddToCart() {
     if (currentQuantity > 0) {
-      addProduct(coffee);
+      addProduct({...coffee,quantity:currentQuantity});
       setCurrentQuantity(0);
     }
   }
