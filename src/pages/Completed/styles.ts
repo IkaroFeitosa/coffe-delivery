@@ -24,6 +24,11 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+
+  img{
+    max-width: 100%;
+  }
 `;
 export const ResumInfo = styled.div`
   display: flex;
@@ -32,6 +37,8 @@ export const ResumInfo = styled.div`
   border: 1px solid transparent;
   border-radius: 6px 44px;
   padding: 2.5rem;
+  width: 100%;
+  max-width: 32.875rem;
 
   background-image: linear-gradient(${(props) => props.theme.background}, ${(props) => props.theme.background}),
   linear-gradient(

@@ -8,8 +8,11 @@ import {
   ResumInfo,
   Text,
 } from "./styles";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function Completed() {
+    const {address,paymentMethod} = useContext(CartContext)
   return (
     <Container>
       <Header>
@@ -23,8 +26,8 @@ export function Completed() {
               <MapPin size={16} />
             </Icon>
             <Text>
-              Entrega em <strong>Rua João Daniel Martinelli, 102</strong> <br />{" "}
-              Farrapos - Porto Alegre, RS
+              Entrega em <strong>{address?.rua}, {address?.numero}</strong> <br />{" "}
+              {address?.bairro} - {address?.cidade}/{address?.uf}
             </Text>
           </ItemInfo>
           <ItemInfo>
@@ -42,7 +45,7 @@ export function Completed() {
             </Icon>
             <Text>
               Pagamento na entrega <br />
-              <strong>Cartão de Crédito</strong>
+              <strong>{paymentMethod}</strong>
             </Text>
           </ItemInfo>
         </ResumInfo>

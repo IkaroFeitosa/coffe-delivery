@@ -25,7 +25,6 @@ export const FormContainer = styled.div`
   }
 `;
 
-
 export const HeaderForm = styled.div`
   display: flex;
   gap: 0.5rem;
@@ -40,7 +39,7 @@ export const ContentForm = styled.div`
   row-gap: 1rem;
   column-gap: 0.75rem;
   grid-template-columns: 12.5rem 17.25rem 3.75rem;
-  flex-wrap: wrap;;
+  flex-wrap: wrap;
   input {
     background-color: ${(props) => props.theme["base-input"]};
     border: 1px solid ${(props) => props.theme["base-button"]};
@@ -61,6 +60,15 @@ export const ContentForm = styled.div`
   }
   input.complemento {
     width: 100%;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    input.cep {
+      grid-column: 100%;
+    }
+    input.rua {
+      grid-column: 100%;
+    }
   }
 `;
 export const ContentInput = styled.div`
