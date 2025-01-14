@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 2.5rem;
   padding-inline: 10rem;
-  margin-top: 2.5rem;
+  margin-top: 5rem;
 `;
 
 export const Header = styled.header`
