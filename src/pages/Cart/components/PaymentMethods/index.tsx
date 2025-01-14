@@ -50,6 +50,7 @@ export function PaymentMethods({alertContainer = false}:IPaymentMethodsProps) {
             key={payment.title}
             onClick={() => handlePaymentMethods(payment.title)}
             active={paymentMethod === payment.title}
+            type="button"
           >
             {payment.icon}
             <span>{payment.title}</span>

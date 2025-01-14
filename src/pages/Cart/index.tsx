@@ -8,6 +8,7 @@ import * as zod from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { useNavigate } from "react-router";
 
 const addressSchema = zod.object({
   cep: zod.string().nonempty("O CEP é obrigatório"),
@@ -21,19 +22,12 @@ const addressSchema = zod.object({
 type TAddress = zod.infer<typeof addressSchema>;
 
 export function Cart() {
-  const { paymentMethod } = useContext(CartContext);
+  const { paymentMethod,insertAddress,address } = useContext(CartContext);
   const [alertPaymentMethods,setAlertPaymentMethods] = useState(false);
+  const navigate = useNavigate();
   const addressForm = useForm<TAddress>({
     resolver: zodResolver(addressSchema),
-    defaultValues: {
-      cep: "",
-      rua: "",
-      numero: "",
-      complemento: "",
-      bairro: "",
-      cidade: "",
-      uf: "",
-    },
+    defaultValues: address
   });
   const { handleSubmit } = addressForm;
 
@@ -42,8 +36,9 @@ export function Cart() {
         setAlertPaymentMethods(true);
         return;
     }
+    insertAddress(data);
     setAlertPaymentMethods(false);
-    console.log(data);
+    navigate('/completed')
   }
   return (
     <CartContainer>

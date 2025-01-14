@@ -14,6 +14,10 @@ export const CartContainer = styled.div`
     color: ${(props) => props.theme["base-subtitle"]};
     margin-bottom: 0.9375rem;
   }
+
+  @media(max-width: 768px){
+    flex-direction: column;
+  }
 `;
 
 export const FormContainer = styled.form`
