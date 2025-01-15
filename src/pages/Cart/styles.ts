@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const CartContainer = styled.div`
   display: flex;
   gap: 2rem;
-  padding-inline: 10rem;
+  width: 100%;
+  max-width: 70rem;
   margin-top: 2.5rem;
 
   h3 {
@@ -29,5 +30,6 @@ export const FormContainer = styled.form`
 export const ResumContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 28rem;
+  width: 100%;
+  max-width: 28rem;
 `;

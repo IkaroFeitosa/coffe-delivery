@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
     width: 100%;
+    max-width: 70rem;
     height: 6.5rem;
     background: ${(props) => props.theme.background};
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
-    padding-inline: 10rem;
     top: 0;
     left: 0;
     z-index: 5;

@@ -8,10 +8,9 @@ interface IIcon {
 export const BannerContainer = styled.div<IBannerContainer>`
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 3.5rem;
-  padding: 5.875rem 10rem;
+  justify-content: center;
+  padding-top: 5.75rem;
+  padding-bottom: 5.875rem;
   background-image: url(${({ backgroundBanner }) => backgroundBanner});
 
     img{
@@ -19,7 +18,25 @@ export const BannerContainer = styled.div<IBannerContainer>`
         height: 22.5rem;
     }
 `;
-
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3.5rem;
+  width: 100%;
+  max-width: 70rem;
+  img{
+    max-width: 100%;
+  }
+  @media (max-width: 768px){
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    img{
+      display: none;
+    }
+  }
+`;
 export const TextBannerContainer = styled.div`
   display: flex;
   flex-direction: column;

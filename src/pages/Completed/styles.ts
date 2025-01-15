@@ -4,7 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding-inline: 10rem;
+  width: 100%;
+  max-width: 70rem;
   margin-top: 5rem;
 `;
 

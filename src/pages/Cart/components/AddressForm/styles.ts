@@ -7,7 +7,8 @@ export const FormContainer = styled.div`
   padding: 2.5rem;
   background-color: ${(props) => props.theme["base-card"]};
   border-radius: 6px;
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   .content-header {
     display: flex;
     flex-direction: column;
@@ -63,11 +64,8 @@ export const ContentForm = styled.div`
   }
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    input.cep {
-      grid-column: 100%;
-    }
-    input.rua {
-      grid-column: 100%;
+    input{
+      grid-column: span 1 !important;
     }
   }
 `;
@@ -89,5 +87,8 @@ export const ContentInput = styled.div`
     color: ${(props) => props.theme["base-label"]};
     font-size: 0.75rem;
     right: 0.75rem;
+  }
+  @media (max-width: 768px) {
+    grid-column: span 1;
   }
 `;

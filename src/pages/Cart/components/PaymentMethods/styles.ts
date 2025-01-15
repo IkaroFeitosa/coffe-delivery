@@ -7,13 +7,15 @@ export const PaymentContainer = styled.div<{alertContainer: boolean}>`
   padding: 2.5rem;
   background-color: ${(props) => props.theme["base-card"]};
   border-radius: 6px;
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   svg {
     color: ${(props) => props.theme.purple};
   }
   .content-payment-methods {
     display: flex;
     gap: 0.75rem;
+    flex-wrap: wrap;
   }
   .content-header {
     display: flex;
@@ -66,6 +68,7 @@ export const HeaderContainer = styled.div`
 
 export const ItemPaymentMethods = styled.button<{ active?: boolean }>`
   width: 100%;
+  max-width: 11.166875rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
